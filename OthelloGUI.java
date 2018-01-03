@@ -141,6 +141,7 @@ public class OthelloGUI {
       // Create the label to display "SCOREBOARD" heading
       JLabel scoreLabel = new JLabel ("SCOREBOARD", JLabel.CENTER);
       scoreLabel.setFont(headingFont);
+	  scoreLabel.setForeground(Color.DARK_GRAY);
       scoreLabel.setAlignmentX (Component.CENTER_ALIGNMENT);
       //scoreLabel.setForeground(Color.white);
    
@@ -174,12 +175,12 @@ public class OthelloGUI {
       // Create the label to display "NEXT TURN" heading
       JLabel nextLabel = new JLabel ("NEXT TURN", JLabel.CENTER);
       nextLabel.setFont(headingFont);
+      nextLabel.setForeground(Color.DARK_GRAY);
       nextLabel.setAlignmentX (Component.CENTER_ALIGNMENT);
       // nextLabel.setForeground(Color.white);
    
       // Create the JLabel for the nextPlayer
       nextPlayerIcon = new JLabel();
-      System.out.println(nextPlayerIcon.getAlignmentX());
       nextPlayerIcon.setAlignmentX(JLabel.CENTER_ALIGNMENT);
       nextPlayerIcon.setIcon(playerIcon[0]);
    
