@@ -1,7 +1,9 @@
 # Othello (Shellos Shuffle)
 This is a digital version of the Othello board game written in Java. It was created for ICS3U1 (Introduction to Computer Science) in May 2017.
 
-### Game Rules
+![shellos_shuffle](https://user-images.githubusercontent.com/34670205/35906157-8716b6a4-0bb7-11e8-8956-18a9d4468949.png)
+
+## Game Rules
 
 Please note that there are slight differences between these rules and the ones used for the original Othello.
 
