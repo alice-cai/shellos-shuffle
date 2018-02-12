@@ -1,5 +1,5 @@
 # Othello (Shellos Shuffle)
-This is a digital version of the Othello board game written in Java. It was created for ICS3U1 (Introduction to Computer Science) in May 2017.
+This is a digital version of the Othello (a.k.a. Reversi) board game written in Java. It was created for ICS3U1 (Introduction to Computer Science) in May 2017.
 
 ### Game Rules
 

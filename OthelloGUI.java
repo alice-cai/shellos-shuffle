@@ -125,14 +125,13 @@ public class OthelloGUI {
 
    // createInfoPanel
    private JPanel createInfoPanel() {
-   
       JPanel panel = new JPanel();
       panel.setPreferredSize(new Dimension(INFOPANEWIDTH, INFOPANEHEIGHT));
       panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
       panel.setBackground (background);
    
-      Font headingFont = new Font ("Calibri", Font.BOLD, 20);
-      Font regularFont = new Font ("Serif", Font.BOLD, 16);
+      Font headingFont = new Font ("Optima", Font.BOLD, 20);
+      Font regularFont = new Font ("Optima", Font.BOLD, 16);
    
       // Create a panel for the scoreboard
       JPanel scorePanel = new JPanel();
@@ -141,7 +140,7 @@ public class OthelloGUI {
       // Create the label to display "SCOREBOARD" heading
       JLabel scoreLabel = new JLabel ("SCOREBOARD", JLabel.CENTER);
       scoreLabel.setFont(headingFont);
-	  scoreLabel.setForeground(Color.DARK_GRAY);
+      scoreLabel.setForeground(new Color(102, 102, 102));
       scoreLabel.setAlignmentX (Component.CENTER_ALIGNMENT);
       //scoreLabel.setForeground(Color.white);
    
@@ -156,6 +155,7 @@ public class OthelloGUI {
       for (int i = 0; i < NUMPLAYER; i++) {
          playerScore[i] = new JTextField();
          playerScore[i].setFont(regularFont);
+         playerScore[i].setForeground(new Color(102, 102, 102));
          playerScore[i].setText("0");
          playerScore[i].setEditable(false);
          playerScore[i].setHorizontalAlignment (JTextField.CENTER);
@@ -175,7 +175,7 @@ public class OthelloGUI {
       // Create the label to display "NEXT TURN" heading
       JLabel nextLabel = new JLabel ("NEXT TURN", JLabel.CENTER);
       nextLabel.setFont(headingFont);
-      nextLabel.setForeground(Color.DARK_GRAY);
+      nextLabel.setForeground(new Color(102, 102, 102));
       nextLabel.setAlignmentX (Component.CENTER_ALIGNMENT);
       // nextLabel.setForeground(Color.white);
    
@@ -200,12 +200,14 @@ public class OthelloGUI {
       mainFrame = new JFrame ("Othello");
       JPanel panel = (JPanel)mainFrame.getContentPane();
       panel.setLayout (new BoxLayout(panel,BoxLayout.Y_AXIS));
+      panel.setBackground(background);
    
       // Create the panel for the logo
       JPanel logoPane = new JPanel();
       logoPane.setPreferredSize(new Dimension (LOGOWIDTH, LOGOHEIGHT));
       JLabel logo = new JLabel();
       logo.setIcon(new ImageIcon(logoIcon));
+      logoPane.setBackground(background);
       logoPane.add(logo);
    
       // Create the bottom Panel which contains the play panel and info Panel
@@ -214,6 +216,7 @@ public class OthelloGUI {
       bottomPane.setPreferredSize(new Dimension(PLAYPANEWIDTH + INFOPANEWIDTH, PLAYPANEHEIGHT));
       bottomPane.add(createPlayPanel());
       bottomPane.add(createInfoPanel());
+      bottomPane.setBackground(background);
    
       // Add the logo and bottom panel to the main frame
       panel.add(logoPane);
@@ -221,6 +224,7 @@ public class OthelloGUI {
    
       mainFrame.setContentPane(panel);
       // mainFrame.setPreferredSize(new Dimension(FRAMEWIDTH, FRAMEHEIGHT));
+      mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       mainFrame.setSize(FRAMEWIDTH, FRAMEHEIGHT);
       mainFrame.setVisible(true);
    }
@@ -314,7 +318,7 @@ public class OthelloGUI {
    * Display a pop up window displaying the message about invalid move
    */
    public void showInvalidMoveMessage(){
-      JOptionPane.showMessageDialog(null, " This move is invalid", "Invalid Move", JOptionPane.PLAIN_MESSAGE, null); 
+      JOptionPane.showMessageDialog(mainFrame, "That move is invalid!", "Invalid Move", JOptionPane.ERROR_MESSAGE, null); 
    }
 
    /**
@@ -324,14 +328,14 @@ public class OthelloGUI {
    * @param outflank the number of opponents that were outflanked
    */
    public void showOutflankMessage(int player, int outflank){
-      JOptionPane.showMessageDialog(null, " outflanked " + outflank + " opponent(s).", "OutFlank!", JOptionPane.PLAIN_MESSAGE, playerIcon[player]); 
+      JOptionPane.showMessageDialog(mainFrame, " outflanked " + outflank + " opponent(s)!", "OutFlank!", JOptionPane.INFORMATION_MESSAGE, playerIcon[player]); 
    }
    
    /**
    * Display a pop up window displaying the message about a tie game
    */
    public void showTieGameMessage(){
-      JOptionPane.showMessageDialog(null, " This game is tie.", "Tie Game", JOptionPane.PLAIN_MESSAGE, null); 
+      JOptionPane.showMessageDialog(mainFrame, "This game is tie.", "Tie!", JOptionPane.INFORMATION_MESSAGE, null); 
    }
 
    /**
@@ -340,7 +344,7 @@ public class OthelloGUI {
    * @param player the player number of the winner of the game
    */
    public void showWinnerMessage(int player){
-      JOptionPane.showMessageDialog(null, " won this game!", "This game has a winner!", JOptionPane.PLAIN_MESSAGE, playerIcon[player]); 
+      JOptionPane.showMessageDialog(mainFrame, " won this game!", "This game has a winner!", JOptionPane.INFORMATION_MESSAGE, playerIcon[player]); 
    }
 
    /**
@@ -349,7 +353,7 @@ public class OthelloGUI {
    * @param player the player number of the winner of the match
    */
    public void showFinalWinnerMessage(int player){
-      JOptionPane.showMessageDialog(null, " won the match with " + MAXGAME + " wins", "The match is finished", JOptionPane.PLAIN_MESSAGE, playerIcon[player]); 
+      JOptionPane.showMessageDialog(mainFrame, " won the match with " + MAXGAME + " wins", "Match Over!", JOptionPane.INFORMATION_MESSAGE, playerIcon[player]); 
       System.exit (0);
    }
 	
@@ -376,7 +380,5 @@ public class OthelloGUI {
       OthelloGUI gui = new OthelloGUI ();
       Othello game = new Othello (gui);
       OthelloListener listener = new OthelloListener (game, gui);
-   	
    }
-
 }
